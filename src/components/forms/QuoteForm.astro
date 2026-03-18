@@ -1,0 +1,84 @@
+---
+import { formConfig, siteConfig } from "../../config/site";
+import { withBase } from "../../lib/paths";
+import Button from "../ui/Button.astro";
+import FormField from "../ui/FormField.astro";
+
+const nextUrl = new URL(withBase("contact?sent=1"), siteConfig.siteUrl).toString();
+---
+
+<form class="quote-form" action={formConfig.endpoint} method="POST" data-quote-form>
+  <input type="hidden" name="_subject" value={formConfig.subject} />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_next" value={nextUrl} />
+  <input type="hidden" name="_autoresponse" value="Merci pour votre demande. ConsultRenov revient vers vous sous 48h." />
+
+  <div class="form-note" data-form-feedback>
+    Devis gratuit, réponse personnalisée et rappel par un conseiller sous 48h.
+  </div>
+
+  <div class="form-grid">
+    <FormField
+      label="Nom et prénom"
+      name="nom"
+      placeholder="Votre nom"
+      required
+    />
+    <FormField
+      label="Téléphone"
+      name="telephone"
+      type="tel"
+      placeholder="06 00 00 00 00"
+      required
+    />
+    <FormField
+      label="Email"
+      name="email"
+      type="email"
+      placeholder="vous@exemple.fr"
+      required
+    />
+    <FormField
+      label="Ville"
+      name="ville"
+      placeholder="Guichainville, Évreux..."
+    />
+    <FormField
+      label="Type de projet"
+      name="projet"
+      placeholder="Menuiserie, façade, toiture, chauffage..."
+      full
+    />
+    <FormField
+      label="Votre besoin"
+      name="message"
+      placeholder="Décrivez votre projet, vos délais ou les points à traiter."
+      textarea
+      full
+      required
+    />
+  </div>
+
+  <label class="consent">
+    <input type="checkbox" name="consentement" required />
+    <span>
+      J'accepte que mes données soient utilisées pour être recontacté au sujet de ma demande de devis.
+    </span>
+  </label>
+
+  <div class="cluster">
+    <Button type="submit" variant="primary">Envoyer ma demande</Button>
+    <Button href={siteConfig.phoneHref} variant="ghost">Appeler maintenant</Button>
+  </div>
+</form>
+
+<script is:inline>
+  const feedback = document.querySelector("[data-form-feedback]");
+  const params = new URLSearchParams(window.location.search);
+  if (feedback && params.get("sent") === "1") {
+    feedback.textContent = "Votre demande a bien été envoyée. ConsultRenov revient vers vous sous 48h.";
+    feedback.style.background = "rgba(31, 107, 68, 0.12)";
+    feedback.style.color = "#1f6b44";
+  }
+</script>

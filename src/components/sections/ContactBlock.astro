@@ -1,0 +1,48 @@
+---
+import { siteConfig } from "../../config/site";
+import QuoteForm from "../forms/QuoteForm.astro";
+import Icon from "../ui/Icon.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section" id="contact">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Contact"
+      title="Demandez votre devis gratuit ou faites-vous rappeler"
+      copy="Les coordonnées complètes sont visibles et la prise de contact reste simple, rapide et rassurante."
+    />
+    <div class="contact-grid contact-block">
+      <div class="contact-card-list" data-reveal="left">
+        <article class="contact-card">
+          <div class="contact-card-top">
+            <h3 class="title-md">Téléphone</h3>
+            <div class="icon-wrap"><Icon name="phone" /></div>
+          </div>
+          <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+          <p class="text-muted">Pour une première qualification rapide du besoin.</p>
+        </article>
+        <article class="contact-card">
+          <div class="contact-card-top">
+            <h3 class="title-md">Email</h3>
+            <div class="icon-wrap"><Icon name="mail" /></div>
+          </div>
+          <a href={siteConfig.emailHref}>{siteConfig.email}</a>
+          <p class="text-muted">Idéal pour transmettre une demande détaillée et recevoir un retour personnalisé.</p>
+        </article>
+        <article class="contact-card">
+          <div class="contact-card-top">
+            <h3 class="title-md">Adresse</h3>
+            <div class="icon-wrap"><Icon name="map" /></div>
+          </div>
+          <p>{siteConfig.addressLine}</p>
+          <p>{siteConfig.postalCode} {siteConfig.city}</p>
+          <p class="text-muted">Secteur mis en avant: Évreux et alentours.</p>
+        </article>
+      </div>
+      <div data-reveal="right">
+        <QuoteForm />
+      </div>
+    </div>
+  </div>
+</section>

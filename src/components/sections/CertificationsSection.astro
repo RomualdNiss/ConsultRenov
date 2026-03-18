@@ -1,0 +1,26 @@
+---
+import { commitments } from "../../data/reassurance";
+import SectionHeading from "../ui/SectionHeading.astro";
+import Icon from "../ui/Icon.astro";
+---
+
+<section class="section">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Engagements"
+      title="Des repères de confiance mis en avant tout au long du parcours"
+      copy="Les supports mettent en avant le sérieux, la qualité des matériaux, la logique d'accompagnement et l'étude des aides possibles selon les projets."
+    />
+    <div class="cards-grid">
+      {commitments.map((item) => (
+        <article class="benefit-card" data-reveal>
+          <div class="icon-wrap">
+            <Icon name="shield" />
+          </div>
+          <h3 class="title-md">{item.title}</h3>
+          <p class="text-muted">{item.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

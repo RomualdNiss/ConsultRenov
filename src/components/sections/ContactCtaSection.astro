@@ -1,0 +1,26 @@
+---
+import { siteConfig } from "../../config/site";
+import { withBase } from "../../lib/paths";
+import Button from "../ui/Button.astro";
+---
+
+<section class="section">
+  <div class="container">
+    <div class="accent-panel" data-reveal>
+      <div class="split-grid" style="align-items: center;">
+        <div class="stack">
+          <p class="eyebrow" style="color: rgba(255,255,255,0.84);">Projet sur mesure</p>
+          <h2 class="title-lg" style="color: #ffffff;">Parlons de votre rénovation et de vos priorités.</h2>
+          <p>
+            Devis gratuit, échanges clairs, accompagnement personnalisé et rappel sous 48h pour
+            transformer votre besoin en projet lisible.
+          </p>
+        </div>
+        <div class="cluster" style="justify-content: flex-start;">
+          <Button href={withBase("contact")} variant="ghost">{siteConfig.ctaPrimary}</Button>
+          <Button href={siteConfig.phoneHref} variant="ghost">{siteConfig.phone}</Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

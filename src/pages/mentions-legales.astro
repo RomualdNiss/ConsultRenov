@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { legalPlaceholders, siteConfig } from "../config/site";
+---
+
+<BaseLayout
+  title="Mentions légales | ConsultRenov"
+  description="Mentions légales du site ConsultRenov."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Légal</p>
+      <h1 class="title-lg">Mentions légales</h1>
+      <p class="lead" style="margin-top: 1rem;">
+        Certaines informations administratives restent à confirmer avant mise en ligne finale afin
+        d'éviter toute donnée inventée.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-list">
+      <article class="legal-card">
+        <h2 class="title-md">Éditeur du site</h2>
+        <p><strong>Nom:</strong> {siteConfig.legalName}</p>
+        <p><strong>Adresse:</strong> {siteConfig.addressLine}, {siteConfig.postalCode} {siteConfig.city}</p>
+        <p><strong>Téléphone:</strong> {siteConfig.phone}</p>
+        <p><strong>Email:</strong> {siteConfig.email}</p>
+        <p><strong>Statut juridique:</strong> {legalPlaceholders.companyStatus}</p>
+        <p><strong>SIRET:</strong> {legalPlaceholders.siret}</p>
+        <p><strong>TVA intracommunautaire:</strong> {legalPlaceholders.vatNumber}</p>
+        <p><strong>Directeur de la publication:</strong> {legalPlaceholders.publishingDirector}</p>
+      </article>
+
+      <article class="legal-card">
+        <h2 class="title-md">Hébergement</h2>
+        <p><strong>Hébergeur:</strong> {legalPlaceholders.host}</p>
+        <p>
+          L'information d'hébergement devra être complétée avec la raison sociale et l'adresse de
+          l'hébergeur utilisé avant la mise en production publique.
+        </p>
+      </article>
+
+      <article class="legal-card">
+        <h2 class="title-md">Propriété intellectuelle</h2>
+        <p>
+          L'ensemble des contenus du site, hors éléments tiers explicitement identifiés, est protégé
+          par le droit de la propriété intellectuelle. Toute reproduction non autorisée est interdite.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

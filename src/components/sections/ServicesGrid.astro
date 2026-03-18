@@ -1,0 +1,28 @@
+---
+import type { Service } from "../../data/services";
+import SectionHeading from "../ui/SectionHeading.astro";
+import ServiceCard from "../ui/ServiceCard.astro";
+
+interface Props {
+  services: Service[];
+}
+
+const { services } = Astro.props;
+---
+
+<section class="section" id="expertises">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Expertises"
+      title="Des expertises coordonnées pour rénover l'habitat de façon cohérente"
+      copy="ConsultRenov structure son offre autour des postes clés de confort, de performance énergétique et de valorisation de l'habitat."
+    />
+    <div class="cards-grid">
+      {services.map((service, index) => (
+        <div data-reveal={index % 2 === 0 ? "left" : "right"}>
+          <ServiceCard service={service} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

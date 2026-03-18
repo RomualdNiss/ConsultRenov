@@ -1,0 +1,22 @@
+---
+import { benefits } from "../../data/reassurance";
+import BenefitCard from "../ui/BenefitCard.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section surface" style="border-radius: 0; border-inline: 0;">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Pourquoi choisir ConsultRenov"
+      title="Une rénovation orientée bénéfices concrets pour le client"
+      copy="Le site met en avant des projets lisibles, rassurants et utiles pour votre confort, vos usages et la valeur de votre maison."
+    />
+    <div class="cards-grid">
+      {benefits.map((item) => (
+        <div data-reveal>
+          <BenefitCard title={item.title} copy={item.copy} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

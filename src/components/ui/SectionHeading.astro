@@ -1,0 +1,17 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  copy?: string;
+  centered?: boolean;
+}
+
+const { eyebrow, title, copy, centered = false } = Astro.props;
+const classes = centered ? "section-heading is-centered" : "section-heading";
+---
+
+<div class={classes}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 class="title-lg">{title}</h2>
+  {copy && <p class="lead" style="margin-top: 1rem;">{copy}</p>}
+</div>

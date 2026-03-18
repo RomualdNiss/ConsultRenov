@@ -1,0 +1,94 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Button from "../../components/ui/Button.astro";
+import BenefitCard from "../../components/ui/BenefitCard.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import ContactCtaSection from "../../components/sections/ContactCtaSection.astro";
+import { withBase } from "../../lib/paths";
+import { services } from "../../data/services";
+
+export function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+---
+
+<BaseLayout title={`${service.seoTitle} | ConsultRenov`} description={service.seoDescription}>
+  <section class="page-hero">
+    <div class="container split-grid">
+      <div class="stack" data-reveal="left">
+        <div class="breadcrumbs">
+          <a href={withBase("")}>Accueil</a>
+          <span>/</span>
+          <a href={withBase("services")}>Services</a>
+          <span>/</span>
+          <strong>{service.title}</strong>
+        </div>
+        <p class="eyebrow">{service.shortTitle}</p>
+        <h1 class="title-lg">{service.title} à Évreux et Guichainville</h1>
+        <p class="lead">{service.intro}</p>
+        <div class="cluster">
+          <Button href={withBase("contact")} variant="primary">Demander un devis gratuit</Button>
+          <Button href={withBase("contact#contact")} variant="ghost">Être rappelé sous 48h</Button>
+        </div>
+      </div>
+      <div class="accent-panel" data-reveal="right">
+        <h2 class="title-md">{service.highlight}</h2>
+        <p>{service.summary}</p>
+        <ul class="bullet-list stack" style="margin-top: 1rem;">
+          {service.items.map((item: string) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Bénéfices"
+        title={`Pourquoi intégrer ${service.shortTitle.toLowerCase()} dans votre projet`}
+        copy="La page détail reste orientée bénéfices concrets et aide à faire avancer le visiteur vers la prise de contact."
+      />
+      <div class="cards-grid">
+        {service.benefits.map((item: string) => (
+          <div data-reveal>
+            <BenefitCard title={item} copy={service.summary} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section surface" style="border-radius: 0; border-inline: 0;">
+    <div class="container split-grid">
+      <div data-reveal="left">
+        <SectionHeading
+          eyebrow="Prestations"
+          title="Ce que cette expertise peut couvrir"
+          copy="Le détail de service est prêt à accueillir plus tard des visuels de réalisations, une FAQ dédiée et des cas d'usage plus précis."
+        />
+        <div class="service-list" style="margin-top: 1rem;">
+          {service.items.map((item: string) => (
+            <span>{item}</span>
+          ))}
+        </div>
+      </div>
+      <div class="highlight-panel" data-reveal="right">
+        <h3 class="title-md">Parcours recommandé</h3>
+        <ul class="bullet-list stack" style="margin-top: 1rem;">
+          <li>Qualification du besoin et prise d'informations.</li>
+          <li>Étude personnalisée avec devis gratuit.</li>
+          <li>Planification des travaux et suivi après intervention.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <ContactCtaSection />
+</BaseLayout>

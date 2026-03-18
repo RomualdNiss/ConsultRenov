@@ -1,0 +1,23 @@
+---
+import { processSteps } from "../../data/reassurance";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section surface" style="border-radius: 0; border-inline: 0;">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Méthode"
+      title="Un déroulé clair pour réduire la friction et rassurer avant les travaux"
+      copy="Le site doit faire comprendre immédiatement comment se passe un projet, du premier échange jusqu'au suivi."
+    />
+    <div class="process-grid">
+      {processSteps.map((item) => (
+        <article class="process-card" data-reveal>
+          <span class="step">{item.step}</span>
+          <h3 class="title-md">{item.title}</h3>
+          <p class="text-muted">{item.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

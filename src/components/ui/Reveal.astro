@@ -1,0 +1,13 @@
+---
+interface Props {
+  direction?: "up" | "left" | "right";
+  className?: string;
+}
+
+const { direction = "up", className = "" } = Astro.props;
+const revealValue = direction === "up" ? "" : direction;
+---
+
+<div class={className} data-reveal={revealValue}>
+  <slot />
+</div>

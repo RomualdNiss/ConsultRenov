@@ -1,0 +1,49 @@
+---
+import { withBase } from "../../lib/paths";
+import Button from "../ui/Button.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section">
+  <div class="container split-grid">
+    <div data-reveal="left">
+      <SectionHeading
+        eyebrow="L'entreprise"
+        title="Une entreprise de proximité, sérieuse et engagée dans l'amélioration de l'habitat"
+        copy="ConsultRenov s'adresse aux propriétaires qui recherchent un interlocuteur clair pour coordonner un projet de rénovation sur mesure."
+      />
+      <ul class="bullet-list stack">
+        <li>Une approche commerciale rassurante, sans complexifier le projet.</li>
+        <li>Des solutions pensées pour le confort, la performance et l'image du bien.</li>
+        <li>Un accompagnement du premier échange au suivi après travaux.</li>
+      </ul>
+      <div class="cluster" style="margin-top: 1.5rem;">
+        <Button href={withBase("a-propos")} variant="primary">Découvrir l'entreprise</Button>
+        <Button href={withBase("contact")} variant="ghost">Parler à un conseiller</Button>
+      </div>
+    </div>
+
+    <div class="highlight-panel" data-reveal="right">
+      <div class="stack">
+        <span class="eyebrow">Proximité locale</span>
+        <h3 class="title-md">Guichainville, Évreux et alentours</h3>
+        <p class="text-muted">
+          Le site installe une présence locale claire afin d'inspirer confiance dès les premiers
+          écrans et de soutenir le référencement sur les recherches de proximité.
+        </p>
+      </div>
+      <div class="contact-strip">
+        <span>Rénovation énergétique</span>
+        <span>Amélioration de l'habitat</span>
+        <span>Accompagnement personnalisé</span>
+      </div>
+      <div class="accent-panel">
+        <h3 class="title-md">Un seul point d'entrée pour avancer simplement</h3>
+        <p>
+          Étude du besoin, devis gratuit, conseil, planification et suivi: l'expérience doit rester
+          fluide et rassurante du premier clic jusqu'à la prise de contact.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,63 @@
+---
+import ContactCtaSection from "../../components/sections/ContactCtaSection.astro";
+import ServicesGrid from "../../components/sections/ServicesGrid.astro";
+import Button from "../../components/ui/Button.astro";
+import SectionHeading from "../../components/ui/SectionHeading.astro";
+import { withBase } from "../../lib/paths";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { seoDefaults } from "../../data/seo";
+import { services } from "../../data/services";
+---
+
+<BaseLayout title={seoDefaults.servicesTitle} description={seoDefaults.servicesDescription}>
+  <section class="page-hero">
+    <div class="container split-grid">
+      <div class="stack" data-reveal="left">
+        <p class="eyebrow">Services</p>
+        <h1 class="title-lg">Un catalogue structuré pour orienter rapidement chaque besoin.</h1>
+        <p class="lead">
+          Menuiserie, confort extérieur, toiture, façade, revêtements et solutions énergétiques:
+          l'offre est organisée pour donner une lecture claire de vos priorités de travaux.
+        </p>
+      </div>
+      <div class="highlight-panel" data-reveal="right">
+        <h2 class="title-md">Une architecture prête à évoluer</h2>
+        <p class="text-muted">
+          Chaque famille de prestations dispose d'une page dédiée afin d'accueillir plus tard des
+          contenus SEO détaillés, réalisations, FAQ et cas clients.
+        </p>
+        <div class="cluster" style="margin-top: 1.5rem;">
+          <Button href={withBase("contact")} variant="primary">Recevoir un devis gratuit</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ServicesGrid services={services} />
+
+  <section class="section">
+    <div class="container split-grid">
+      <div data-reveal="left">
+        <SectionHeading
+          eyebrow="Approche"
+          title="Un projet peut mobiliser plusieurs postes de travaux"
+          copy="Le site présente les expertises comme des briques complémentaires pour simplifier les projets de rénovation de l'habitat."
+        />
+        <ul class="bullet-list stack">
+          <li>Améliorer l'enveloppe du bâtiment avec façade, toiture et menuiserie.</li>
+          <li>Renforcer le confort d'usage avec les extérieurs et les fermetures.</li>
+          <li>Traiter la performance énergétique avec les équipements adaptés.</li>
+        </ul>
+      </div>
+      <div class="accent-panel" data-reveal="right">
+        <h3 class="title-md">Une lecture orientée bénéfice client</h3>
+        <p>
+          Chaque page service met en avant les usages, les bénéfices et les prestations couvertes,
+          avec un accès direct au devis gratuit ou au rappel commercial.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ContactCtaSection />
+</BaseLayout>

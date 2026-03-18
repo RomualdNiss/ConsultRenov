@@ -1,0 +1,74 @@
+---
+import { navigation } from "../../data/navigation";
+import { siteConfig } from "../../config/site";
+import { withBase } from "../../lib/paths";
+import Button from "../ui/Button.astro";
+import MobileMenu from "./MobileMenu.astro";
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header" data-site-header>
+  <div class="container">
+    <div class="header-inner">
+      <a class="brand" href={withBase("")} aria-label="ConsultRenov, retour à l'accueil">
+        <img
+          src={withBase("assets/source/logo-consultrenov.svg")}
+          alt="ConsultRenov"
+          width="164"
+          height="42"
+          loading="eager"
+        />
+      </a>
+      <nav class="header-nav" aria-label="Navigation principale">
+        <div class="nav-links">
+          {navigation.map((item) => (
+            <a
+              class="nav-link"
+              href={withBase(item.href)}
+              aria-current={pathname === item.href ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
+        </div>
+        <Button href={withBase("contact")} variant="primary" size="small">
+          {siteConfig.ctaPrimary}
+        </Button>
+      </nav>
+      <button
+        class="mobile-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Ouvrir le menu"
+        data-menu-toggle
+      >
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+    <MobileMenu pathname={pathname} />
+  </div>
+</header>
+
+<script is:inline>
+  const header = document.querySelector("[data-site-header]");
+  const toggle = document.querySelector("[data-menu-toggle]");
+  const mobileMenu = document.querySelector("[data-mobile-menu]");
+
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+  };
+
+  toggle?.addEventListener("click", () => {
+    if (!mobileMenu) return;
+    const isOpen = mobileMenu.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+</script>

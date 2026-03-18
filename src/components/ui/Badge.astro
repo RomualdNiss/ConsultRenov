@@ -1,0 +1,12 @@
+---
+interface Props {
+  tone?: "default" | "soft";
+}
+
+const { tone = "default" } = Astro.props;
+const classes = tone === "soft" ? "badge badge-soft" : "badge";
+---
+
+<span class={classes}>
+  <slot />
+</span>

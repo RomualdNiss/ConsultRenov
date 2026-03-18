@@ -1,0 +1,39 @@
+---
+interface Props {
+  label: string;
+  name: string;
+  type?:
+    | "text"
+    | "email"
+    | "tel"
+    | "url"
+    | "number"
+    | "search"
+    | "password";
+  required?: boolean;
+  placeholder?: string;
+  textarea?: boolean;
+  full?: boolean;
+}
+
+const {
+  label,
+  name,
+  type = "text",
+  required = false,
+  placeholder = "",
+  textarea = false,
+  full = false,
+} = Astro.props;
+
+const classes = full ? "form-field is-full" : "form-field";
+---
+
+<div class={classes}>
+  <label for={name}>{label}</label>
+  {textarea ? (
+    <textarea id={name} name={name} placeholder={placeholder} required={required}></textarea>
+  ) : (
+    <input id={name} name={name} type={type} placeholder={placeholder} required={required} />
+  )}
+</div>

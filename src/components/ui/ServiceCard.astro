@@ -1,0 +1,35 @@
+---
+import type { Service } from "../../data/services";
+import { withBase } from "../../lib/paths";
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+---
+
+<article class="service-card">
+  <div class="service-card-top">
+    <div class="icon-wrap">
+      <Icon name={service.icon as any} />
+    </div>
+    <span class="kicker">{service.highlight}</span>
+  </div>
+  <div class="stack">
+    <h3 class="title-md">{service.title}</h3>
+    <p class="text-muted">{service.summary}</p>
+  </div>
+  <div class="service-list" aria-label={`Prestations ${service.title}`}>
+    {service.items.map((item) => (
+      <span>{item}</span>
+    ))}
+  </div>
+  <div>
+    <Button href={withBase(`services/${service.slug}`)} variant="ghost" size="small">
+      Découvrir ce service
+    </Button>
+  </div>
+</article>

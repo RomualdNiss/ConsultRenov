@@ -1,0 +1,30 @@
+---
+import AboutPreview from "../components/sections/AboutPreview.astro";
+import BenefitsSection from "../components/sections/BenefitsSection.astro";
+import CertificationsSection from "../components/sections/CertificationsSection.astro";
+import ContactBlock from "../components/sections/ContactBlock.astro";
+import ContactCtaSection from "../components/sections/ContactCtaSection.astro";
+import CoverageSection from "../components/sections/CoverageSection.astro";
+import FaqPreview from "../components/sections/FaqPreview.astro";
+import HeroHome from "../components/sections/HeroHome.astro";
+import ProcessSection from "../components/sections/ProcessSection.astro";
+import ServicesGrid from "../components/sections/ServicesGrid.astro";
+import TrustBar from "../components/sections/TrustBar.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { seoDefaults } from "../data/seo";
+import { services } from "../data/services";
+---
+
+<BaseLayout title={seoDefaults.homeTitle} description={seoDefaults.homeDescription}>
+  <HeroHome />
+  <TrustBar />
+  <ServicesGrid services={services} />
+  <BenefitsSection />
+  <AboutPreview />
+  <CertificationsSection />
+  <ProcessSection />
+  <CoverageSection />
+  <FaqPreview />
+  <ContactCtaSection />
+  <ContactBlock />
+</BaseLayout>

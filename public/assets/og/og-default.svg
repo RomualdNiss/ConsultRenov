@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">ConsultRenov</title>
+  <desc id="desc">Rénovation énergétique et amélioration de l'habitat à Évreux et Guichainville.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F8FF" />
+      <stop offset="100%" stop-color="#E7EEF9" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="58" y="58" width="1084" height="514" rx="36" fill="#FFFFFF" stroke="#D8E4F7" stroke-width="2" />
+  <rect x="92" y="92" width="184" height="184" rx="28" fill="#0047AB" />
+  <path d="M129 187L184 133L239 187" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M149 179V229H219V179" fill="none" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M184 155V229" fill="none" stroke="#B20000" stroke-width="14" stroke-linecap="round" />
+  <path d="M162 194H206" fill="none" stroke="#B20000" stroke-width="14" stroke-linecap="round" />
+  <text x="320" y="185" font-family="Manrope, Arial, sans-serif" font-size="74" font-weight="800" fill="#0047AB">ConsultRenov</text>
+  <text x="320" y="258" font-family="Source Sans 3, Arial, sans-serif" font-size="34" fill="#222222">Rénovation énergétique et amélioration de l'habitat</text>
+  <text x="320" y="318" font-family="Source Sans 3, Arial, sans-serif" font-size="28" fill="#4B5563">Menuiserie · Façade · Toiture · Chauffage · Confort extérieur</text>
+  <rect x="320" y="382" width="256" height="62" rx="31" fill="#0047AB" />
+  <text x="448" y="423" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="700" fill="#FFFFFF">Devis gratuit</text>
+  <rect x="603" y="382" width="318" height="62" rx="31" fill="#FDF1F1" stroke="#F3C9C9" />
+  <text x="762" y="423" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="28" font-weight="700" fill="#B20000">Rappel sous 48h</text>
+  <text x="320" y="500" font-family="Source Sans 3, Arial, sans-serif" font-size="30" fill="#222222">Guichainville · Évreux · 06 79 22 54 80</text>
+</svg>

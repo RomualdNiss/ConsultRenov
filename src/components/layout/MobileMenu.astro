@@ -1,0 +1,27 @@
+---
+import Button from "../ui/Button.astro";
+import { navigation } from "../../data/navigation";
+import { siteConfig } from "../../config/site";
+import { withBase } from "../../lib/paths";
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+---
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+  {navigation.map((item) => (
+    <a
+      class="nav-link"
+      href={withBase(item.href)}
+      aria-current={pathname === item.href ? "page" : undefined}
+    >
+      {item.label}
+    </a>
+  ))}
+  <Button href={withBase("contact")} variant="primary" size="small">
+    {siteConfig.ctaPrimary}
+  </Button>
+</div>

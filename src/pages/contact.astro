@@ -1,0 +1,37 @@
+---
+import CertificationsSection from "../components/sections/CertificationsSection.astro";
+import ContactBlock from "../components/sections/ContactBlock.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { seoDefaults } from "../data/seo";
+import { siteConfig } from "../config/site";
+---
+
+<BaseLayout title={seoDefaults.contactTitle} description={seoDefaults.contactDescription}>
+  <section class="page-hero">
+    <div class="container split-grid">
+      <div class="stack" data-reveal="left">
+        <p class="eyebrow">Contact</p>
+        <h1 class="title-lg">Un échange simple pour lancer votre projet de rénovation.</h1>
+        <p class="lead">
+          Appelez ConsultRenov, écrivez directement ou remplissez le formulaire pour recevoir un
+          devis gratuit et un retour personnalisé sous 48h.
+        </p>
+        <div class="contact-strip">
+          <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+          <a href={siteConfig.emailHref}>{siteConfig.email}</a>
+        </div>
+      </div>
+      <div class="highlight-panel" data-reveal="right">
+        <h2 class="title-md">Adresse</h2>
+        <p>{siteConfig.addressLine}</p>
+        <p>{siteConfig.postalCode} {siteConfig.city}</p>
+        <p class="text-muted" style="margin-top: 1rem;">
+          Secteur mis en avant: Guichainville, Évreux et alentours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ContactBlock />
+  <CertificationsSection />
+</BaseLayout>

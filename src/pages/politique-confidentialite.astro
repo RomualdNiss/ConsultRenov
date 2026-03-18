@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { siteConfig } from "../config/site";
+---
+
+<BaseLayout
+  title="Politique de confidentialité | ConsultRenov"
+  description="Politique de confidentialité du site ConsultRenov."
+>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Confidentialité</p>
+      <h1 class="title-lg">Politique de confidentialité</h1>
+      <p class="lead" style="margin-top: 1rem;">
+        Cette page encadre l'usage des données transmises via les formulaires de contact du site.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-list">
+      <article class="legal-card">
+        <h2 class="title-md">Données collectées</h2>
+        <p>
+          Les formulaires peuvent collecter vos nom, téléphone, email, ville, type de projet et
+          message afin de traiter votre demande de devis ou de rappel.
+        </p>
+      </article>
+
+      <article class="legal-card">
+        <h2 class="title-md">Finalité</h2>
+        <p>
+          Ces données sont utilisées uniquement pour répondre à votre demande, organiser une prise de
+          contact et assurer le suivi commercial lié à votre projet.
+        </p>
+      </article>
+
+      <article class="legal-card">
+        <h2 class="title-md">Durée et destinataires</h2>
+        <p>
+          Les données sont conservées pendant le temps nécessaire au traitement de la demande et
+          transmises uniquement aux personnes en charge du suivi commercial, ainsi qu'au service tiers
+          de traitement du formulaire lorsque celui-ci est utilisé.
+        </p>
+      </article>
+
+      <article class="legal-card">
+        <h2 class="title-md">Vos droits</h2>
+        <p>
+          Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant
+          à <a href={siteConfig.emailHref}>{siteConfig.email}</a>.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

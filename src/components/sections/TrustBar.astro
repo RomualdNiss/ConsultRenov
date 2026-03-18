@@ -1,0 +1,21 @@
+---
+import { trustPoints } from "../../data/reassurance";
+import Icon from "../ui/Icon.astro";
+---
+
+<section class="trust-bar">
+  <div class="container">
+    <div class="surface">
+      <div class="trust-grid">
+        {trustPoints.map((item) => (
+          <div class="trust-item" data-reveal>
+            <div class="icon-wrap">
+              <Icon name="check" />
+            </div>
+            <p class="title-md">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

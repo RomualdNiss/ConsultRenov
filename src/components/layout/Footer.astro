@@ -1,0 +1,59 @@
+---
+import { siteConfig } from "../../config/site";
+import { navigation } from "../../data/navigation";
+import { services } from "../../data/services";
+import { withBase } from "../../lib/paths";
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="stack">
+        <a class="brand" href={withBase("")} aria-label="ConsultRenov">
+          <img
+            src={withBase("assets/source/logo-consultrenov.svg")}
+            alt="ConsultRenov"
+            width="164"
+            height="42"
+            loading="lazy"
+          />
+        </a>
+        <p class="text-muted">
+          ConsultRenov accompagne les projets de rénovation énergétique et d'amélioration de l'habitat
+          à Guichainville, Évreux et alentours.
+        </p>
+        <div class="contact-strip">
+          <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+          <a href={siteConfig.emailHref}>{siteConfig.email}</a>
+        </div>
+      </div>
+
+      <div class="stack">
+        <h3 class="title-md">Navigation</h3>
+        <nav class="footer-nav" aria-label="Navigation secondaire">
+          {navigation.map((item) => (
+            <a href={withBase(item.href)}>{item.label}</a>
+          ))}
+          <a href={withBase("mentions-legales")}>Mentions légales</a>
+          <a href={withBase("politique-confidentialite")}>Confidentialité</a>
+        </nav>
+      </div>
+
+      <div class="stack">
+        <h3 class="title-md">Expertises</h3>
+        <nav class="footer-nav" aria-label="Services principaux">
+          {services.slice(0, 4).map((service) => (
+            <a href={withBase(`services/${service.slug}`)}>{service.title}</a>
+          ))}
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <span>
+        {siteConfig.addressLine}, {siteConfig.postalCode} {siteConfig.city}
+      </span>
+      <span>Facebook / Instagram ConsultRenov</span>
+    </div>
+  </div>
+</footer>

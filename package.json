@@ -1,0 +1,27 @@
+{
+  "name": "consult-renov",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.1",
+    "@fontsource/manrope": "^5.2.8",
+    "@fontsource/source-sans-3": "^5.2.9",
+    "astro": "^6.0.5",
+    "sass": "^1.98.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "typescript": "^5.9.3"
+  }
+}

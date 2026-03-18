@@ -1,0 +1,74 @@
+---
+import { siteConfig } from "../../config/site";
+import { withBase } from "../../lib/paths";
+import Button from "../ui/Button.astro";
+import Badge from "../ui/Badge.astro";
+import Reveal from "../ui/Reveal.astro";
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <Reveal className="hero-copy">
+      <div>
+        <p class="eyebrow">Guichainville · Évreux · rénovation énergétique</p>
+        <h1 class="title-xl">La rénovation de l'habitat pensée pour votre confort.</h1>
+      </div>
+      <p class="lead">
+        {siteConfig.heroTagline}. Menuiserie, façade, toiture, confort extérieur et équipements
+        énergétiques avec un accompagnement personnalisé, lisible et rassurant.
+      </p>
+      <div class="hero-actions">
+        <Button href={withBase("contact")} variant="primary">{siteConfig.ctaPrimary}</Button>
+        <Button href={siteConfig.phoneHref} variant="ghost">{siteConfig.phone}</Button>
+      </div>
+      <div class="hero-trust">
+        <Badge>Devis gratuit</Badge>
+        <Badge tone="soft">Conseiller sous 48h</Badge>
+        <Badge tone="soft">Professionnels qualifiés</Badge>
+      </div>
+    </Reveal>
+
+    <Reveal direction="right">
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-shell">
+          <div class="hero-panel">
+            <span class="hero-stripe">Confort · performance · proximité</span>
+            <div class="stack" style="margin-top: 1.25rem;">
+              <h2 class="title-md">Une approche sérieuse, commerciale et rassurante</h2>
+              <p class="text-muted">
+                Des prestations coordonnées pour améliorer l'habitat, moderniser les extérieurs et
+                accompagner les projets de rénovation énergétique.
+              </p>
+            </div>
+            <div class="cluster">
+              <span class="kicker">Menuiserie</span>
+              <span class="kicker">Façade</span>
+              <span class="kicker">Toiture</span>
+              <span class="kicker">Pompe à chaleur</span>
+            </div>
+          </div>
+          <div class="hero-stat-group">
+            <div class="hero-stat">
+              <div class="hero-number">48h</div>
+              <p class="text-muted">pour être rappelé par un conseiller</p>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-number">6</div>
+              <p class="text-muted">grandes expertises pour couvrir le projet</p>
+            </div>
+          </div>
+          <div class="hero-card-stack">
+            <div class="hero-card">
+              <p class="title-md">Accompagnement personnalisé</p>
+              <p class="text-muted">Étude du besoin, devis gratuit, planification et suivi après travaux.</p>
+            </div>
+            <div class="hero-card">
+              <p class="title-md">Évreux et alentours</p>
+              <p class="text-muted">Une présence de proximité pour les projets situés à Guichainville et sur le secteur d'Évreux.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>

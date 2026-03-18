@@ -1,0 +1,61 @@
+---
+interface Props {
+  name:
+    | "window"
+    | "sun"
+    | "roof"
+    | "facade"
+    | "tiles"
+    | "energy"
+    | "check"
+    | "phone"
+    | "mail"
+    | "map"
+    | "clock"
+    | "shield"
+    | "arrow";
+  size?: number;
+}
+
+const { name, size = 24 } = Astro.props;
+
+const icons: Record<string, string> = {
+  window:
+    '<rect x="3.5" y="4.5" width="17" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 4.5v15M3.5 12h17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  sun:
+    '<circle cx="12" cy="12" r="4.25" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 1.8v2.4M12 19.8v2.4M4.79 4.79l1.7 1.7M17.51 17.51l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.79 19.21l1.7-1.7M17.51 6.49l1.7-1.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  roof:
+    '<path d="M3 11.5L12 4l9 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5V20h11V10.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20v-4.2h6V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+  facade:
+    '<path d="M5 20V7l7-3 7 3v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9h6M9 13h6M11 20v-4h2v4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>',
+  tiles:
+    '<path d="M4 8.5h16M4 15.5h16M8.5 4v16M15.5 4v16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><rect x="4" y="4" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  energy:
+    '<path d="M13.5 1.8c3.9 1.1 7.2 4.2 8.1 8.6.9 4.3-.9 8.7-4.4 11.2-3.8 2.8-9.2 2.8-13 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7.5 12.8h3.1L9.5 22.2l7-10.7h-3.1L14.5 3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+  check:
+    '<path d="M4.5 12.2l4.6 4.6 10.4-10.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+  phone:
+    '<path d="M7.2 4.2h3.1l1.2 4.3-2 1.9c1 2.2 2.8 4 5 5l1.9-2 4.3 1.2v3.1a1.8 1.8 0 0 1-2 1.8C10.8 19 5 13.2 5.4 6.2a1.8 1.8 0 0 1 1.8-2z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>',
+  mail:
+    '<rect x="3.5" y="5" width="17" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  map:
+    '<path d="M12 21s7-6.5 7-11.2a7 7 0 1 0-14 0C5 14.5 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.3" fill="none" stroke="currentColor" stroke-width="1.8"/>',
+  clock:
+    '<circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7.2v5.4l3.6 2.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  shield:
+    '<path d="M12 3.2l7 2.6v5.1c0 4.5-2.9 8.5-7 9.9-4.1-1.4-7-5.4-7-9.9V5.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.3 11.8l2.5 2.5 5-5.1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+  arrow:
+    '<path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>',
+};
+
+const svg = icons[name] ?? icons.check;
+---
+
+<svg
+  aria-hidden="true"
+  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  fill="none"
+  set:html={svg}
+/>

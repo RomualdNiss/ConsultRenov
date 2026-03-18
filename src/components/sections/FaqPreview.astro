@@ -1,0 +1,22 @@
+---
+import { faqPreview } from "../../data/reassurance";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Questions fréquentes"
+      title="Des réponses courtes pour lever les freins les plus fréquents"
+      copy="Cette section prépare l'arrivée d'une FAQ complète tout en répondant dès maintenant aux questions décisives pour la conversion."
+    />
+    <div class="cards-grid">
+      {faqPreview.map((item) => (
+        <article class="faq-card" data-reveal>
+          <h3 class="title-md">{item.question}</h3>
+          <p class="text-muted">{item.answer}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

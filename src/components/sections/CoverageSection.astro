@@ -1,0 +1,38 @@
+---
+import { siteConfig } from "../../config/site";
+import { withBase } from "../../lib/paths";
+import Button from "../ui/Button.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section">
+  <div class="container coverage-grid">
+    <div data-reveal="left">
+      <SectionHeading
+        eyebrow="Zone d'intervention"
+        title="Une présence locale à mettre en avant pour inspirer confiance et soutenir le SEO"
+        copy="ConsultRenov s'adresse prioritairement aux projets de Guichainville, Évreux et des secteurs alentours."
+      />
+      <div class="coverage-list">
+        {siteConfig.serviceArea.map((area) => (
+          <span>{area}</span>
+        ))}
+      </div>
+      <div class="cluster" style="margin-top: 1.5rem;">
+        <Button href={withBase("contact")} variant="primary">Nous parler de votre projet</Button>
+      </div>
+    </div>
+
+    <div class="highlight-panel" data-reveal="right">
+      <h3 class="title-md">Un site pensé pour la conversion locale</h3>
+      <p class="text-muted">
+        Le discours, les balises SEO et les CTA insistent sur la proximité client, le conseil et la
+        réactivité pour les projets situés sur le bassin d'Évreux.
+      </p>
+      <div class="contact-strip">
+        <span>{siteConfig.addressLine}</span>
+        <span>{siteConfig.city}</span>
+      </div>
+    </div>
+  </div>
+</section>
