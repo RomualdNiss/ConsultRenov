@@ -92,6 +92,7 @@ textarea {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 20;
+  background: transparent;
   transition:
     background-color 0.25s ease,
     box-shadow 0.25s ease,
@@ -99,7 +100,8 @@ textarea {
     transform 0.25s ease;
 }
 
-.site-header.is-scrolled {
+.site-header.is-scrolled,
+.site-header.is-menu-open {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(216, 228, 247, 0.9);
@@ -118,12 +120,18 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: var(--space-4);
+  flex: 0 0 auto;
   min-width: 0;
+  max-width: min(46vw, 164px);
 }
 
 .brand img {
-  width: 164px;
-  height: auto;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: min(42px, calc(var(--header-height) - 2rem));
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .header-nav {
@@ -384,8 +392,9 @@ textarea {
 
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-4);
+  align-items: stretch;
 }
 
 .trust-item,
@@ -404,6 +413,14 @@ textarea {
 .trust-item {
   display: grid;
   gap: var(--space-3);
+  min-width: 0;
+}
+
+.trust-item .title-md {
+  font-size: clamp(1rem, 1.2vw, 1.22rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 
 .icon-wrap {
@@ -419,7 +436,9 @@ textarea {
 
 .service-card {
   display: grid;
+  grid-template-rows: auto auto 1fr auto;
   gap: var(--space-4);
+  height: 100%;
   transition:
     transform 0.22s ease,
     box-shadow 0.22s ease,
@@ -444,6 +463,7 @@ textarea {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+  align-content: flex-start;
 }
 
 .service-list span {
@@ -691,9 +711,18 @@ textarea {
   color: var(--color-accent);
 }
 
+.cards-grid > [data-reveal] {
+  display: flex;
+  height: 100%;
+}
+
+.cards-grid > [data-reveal] > * {
+  flex: 1 1 auto;
+}
+
 @media (max-width: 1040px) {
   .trust-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .coverage-grid,
@@ -748,7 +777,11 @@ textarea {
     flex-direction: column;
   }
 
+  .brand {
+    max-width: min(58vw, 140px);
+  }
+
   .brand img {
-    width: 140px;
+    height: min(34px, calc(var(--header-height) - 1.75rem));
   }
 }

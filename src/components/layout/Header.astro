@@ -58,17 +58,31 @@ const pathname = Astro.url.pathname;
   const toggle = document.querySelector("[data-menu-toggle]");
   const mobileMenu = document.querySelector("[data-mobile-menu]");
 
-  const onScroll = () => {
+  const syncHeaderState = () => {
     if (!header) return;
-    header.classList.toggle("is-scrolled", window.scrollY > 8);
+    const isMenuOpen = mobileMenu?.classList.contains("is-open") ?? false;
+    header.classList.toggle("is-menu-open", isMenuOpen);
+    header.classList.toggle("is-scrolled", isMenuOpen || window.scrollY > 8);
   };
 
   toggle?.addEventListener("click", () => {
     if (!mobileMenu) return;
     const isOpen = mobileMenu.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
+    syncHeaderState();
   });
 
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
+  window.addEventListener("scroll", syncHeaderState, { passive: true });
+  window.addEventListener("resize", () => {
+    if (!mobileMenu || !toggle) return;
+
+    if (window.innerWidth > 900 && mobileMenu.classList.contains("is-open")) {
+      mobileMenu.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+
+    syncHeaderState();
+  });
+
+  syncHeaderState();
 </script>
