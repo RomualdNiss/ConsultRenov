@@ -553,6 +553,12 @@ textarea {
   align-items: start;
 }
 
+.coverage-grid > *,
+.reviews-grid > *,
+.footer-grid > * {
+  min-width: 0;
+}
+
 .reviews-stats {
   display: grid;
   gap: var(--space-3);
@@ -657,27 +663,32 @@ textarea {
 .contact-card-list {
   display: grid;
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .contact-card {
   display: grid;
   gap: var(--space-3);
+  min-width: 0;
 }
 
 .quote-form {
   display: grid;
   gap: var(--space-5);
+  min-width: 0;
 }
 
 .form-grid {
   display: grid;
   gap: var(--space-4);
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  min-width: 0;
 }
 
 .form-field {
   display: grid;
   gap: 0.55rem;
+  min-width: 0;
 }
 
 .form-field.is-full {
@@ -741,6 +752,7 @@ textarea {
   gap: 0.65rem;
   color: var(--color-heading);
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .footer {
@@ -832,7 +844,7 @@ textarea {
   .reviews-grid,
   .footer-grid,
   .contact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -875,7 +887,7 @@ textarea {
   .form-grid,
   .trust-grid,
   .reviews-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .footer-note {

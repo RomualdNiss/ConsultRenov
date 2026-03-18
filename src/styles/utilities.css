@@ -99,6 +99,14 @@
   gap: var(--space-8);
 }
 
+.split-grid > *,
+.cards-grid > *,
+.process-grid > *,
+.contact-grid > *,
+.hero-grid > * {
+  min-width: 0;
+}
+
 .cards-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   align-items: stretch;
@@ -176,7 +184,7 @@
   .split-grid,
   .contact-grid,
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -191,6 +199,6 @@
 
   .cards-grid,
   .process-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
