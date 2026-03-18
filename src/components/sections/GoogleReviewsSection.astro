@@ -1,0 +1,83 @@
+---
+import { reviewsConfig } from "../../config/site";
+import Button from "../ui/Button.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const hasWidget = Boolean(reviewsConfig.widgetHtml.trim());
+const hasBusinessUrl = Boolean(reviewsConfig.googleBusinessUrl.trim());
+---
+
+{
+  reviewsConfig.enabled && (
+    <section class="section surface" style="border-radius: 0; border-inline: 0;">
+      <div class="container reviews-grid">
+        <div data-reveal="left">
+          <SectionHeading
+            eyebrow="Avis clients"
+            title={reviewsConfig.widgetTitle}
+            copy={reviewsConfig.widgetIntro}
+          />
+
+          <div class="reviews-stats">
+            <div class="reviews-stat">
+              <strong>{reviewsConfig.reviewCount}</strong>
+              <span>{reviewsConfig.reviewCountLabel}</span>
+            </div>
+            <div class="reviews-stat">
+              <strong>Google</strong>
+              <span>retours visibles sur la fiche établissement</span>
+            </div>
+            <div class="reviews-stat">
+              <strong>Preuve sociale</strong>
+              <span>un levier de confiance avant la prise de contact</span>
+            </div>
+          </div>
+
+          {hasBusinessUrl && (
+            <div class="cluster" style="margin-top: 1.5rem;">
+              <Button
+                href={reviewsConfig.googleBusinessUrl}
+                variant="primary"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Voir tous les avis
+              </Button>
+            </div>
+          )}
+        </div>
+
+        <div class="reviews-widget-shell" data-reveal="right">
+          {hasWidget ? (
+            <div class="reviews-widget" set:html={reviewsConfig.widgetHtml} />
+          ) : (
+            <div class="reviews-widget-fallback">
+              <h3 class="title-md">Des retours clients déjà visibles sur Google</h3>
+              <p class="text-muted">
+                Plus de 50 avis Google sont déjà disponibles pour découvrir l'expérience vécue par
+                les clients ConsultRenov, la qualité de l'accompagnement et le sérieux du suivi.
+              </p>
+              <ul class="bullet-list stack" style="margin-top: 1rem;">
+                <li>Une preuve sociale forte avant la prise de contact.</li>
+                <li>Des retours concrets sur la qualité des échanges et des réalisations.</li>
+                <li>Un accès direct à la fiche Google de l'entreprise.</li>
+              </ul>
+              {hasBusinessUrl && (
+                <div class="cluster" style="margin-top: 1.5rem;">
+                  <Button
+                    href={reviewsConfig.googleBusinessUrl}
+                    variant="ghost"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Consulter la fiche Google
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}

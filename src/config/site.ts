@@ -3,7 +3,7 @@ const publicSiteUrl = new URL(configuredSiteUrl).toString();
 
 export const siteConfig = {
   name: "ConsultRenov",
-  legalName: "ConsultRenov",
+  legalName: "CONSULT'RENOV",
   description:
     "ConsultRenov accompagne vos projets de rénovation énergétique et d'amélioration de l'habitat à Guichainville, Évreux et alentours.",
   siteUrl: publicSiteUrl,
@@ -16,8 +16,8 @@ export const siteConfig = {
   city: "Guichainville",
   serviceArea: ["Guichainville", "Évreux", "agglomération d'Évreux", "secteurs alentours"],
   socials: [
-    { label: "Facebook", href: "#" },
-    { label: "Instagram", href: "#" },
+    { label: "Linkedin", href: "https://fr.linkedin.com/in/consult-renov-7573043a9" },
+    { label: "Instagram", href: "https://www.instagram.com/consultrenov/" },
   ],
   ctaPrimary: "Demander un devis gratuit",
   ctaSecondary: "Être rappelé sous 48h",
@@ -31,10 +31,22 @@ export const formConfig = {
   subject: "Nouvelle demande de devis - ConsultRenov",
 } as const;
 
+export const reviewsConfig = {
+  enabled: true,
+  provider: "generic",
+  widgetTitle: "Ils nous font confiance pour leurs travaux",
+  widgetIntro:
+    "Consultez les avis laissés par nos clients sur Google et découvrez les retours d'expérience sur la qualité de l'accompagnement et des réalisations.",
+  reviewCount: "50+",
+  reviewCountLabel: "avis Google",
+  googleBusinessUrl: import.meta.env.PUBLIC_GOOGLE_REVIEWS_URL || "",
+  widgetHtml: import.meta.env.PUBLIC_REVIEWS_WIDGET_HTML || "",
+} as const;
+
 export const legalPlaceholders = {
-  companyStatus: "À confirmer avant mise en ligne",
-  siret: "À confirmer avant mise en ligne",
-  vatNumber: "À confirmer avant mise en ligne",
-  publishingDirector: "À confirmer avant mise en ligne",
-  host: "À confirmer avant mise en ligne",
+  companyStatus: "SAS (Société par actions simplifiée)",
+  siret: "98990670600019",
+  vatNumber: "FR43989906706",
+  publishingDirector: "À définir (président de la société)",
+  host: "À définir (ex : Vercel, Hostinger, OVH...)",
 } as const;

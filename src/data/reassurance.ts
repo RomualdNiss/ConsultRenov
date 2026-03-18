@@ -33,7 +33,7 @@ export const commitments = [
   },
   {
     title: "Suivi et proximité",
-    copy: "ConsultRenov met en avant un contact humain, une réactivité commerciale et un SAV à l'écoute.",
+    copy: "ConsultRenov met l'accent sur un contact humain, une relation claire et un service après-vente à l'écoute.",
   },
   {
     title: "Aides possibles à étudier",
@@ -77,18 +77,18 @@ export const processSteps = [
 export const faqPreview = [
   {
     question: "Le devis est-il gratuit ?",
-    answer: "Oui, le devis est présenté comme gratuit dans les supports ConsultRenov.",
+    answer: "Oui, ConsultRenov propose un devis gratuit pour étudier votre projet.",
   },
   {
     question: "Sous quel délai puis-je être rappelé ?",
-    answer: "Le site met en avant un rappel par un conseiller sous 48h.",
+    answer: "Un conseiller peut vous recontacter sous 48h selon votre demande.",
   },
   {
     question: "Intervenez-vous autour d'Évreux ?",
-    answer: "Oui, la communication met en avant Guichainville, Évreux et les secteurs alentours.",
+    answer: "Oui, ConsultRenov intervient à Guichainville, Évreux et dans les communes voisines.",
   },
   {
     question: "Peut-on parler d'aides à la rénovation ?",
-    answer: "Oui, les aides possibles peuvent être abordées selon le type de projet et l'éligibilité.",
+    answer: "Oui, nous pouvons vous orienter sur les aides envisageables selon votre projet et votre situation.",
   },
 ];

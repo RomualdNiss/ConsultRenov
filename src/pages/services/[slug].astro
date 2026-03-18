@@ -53,7 +53,7 @@ const { service } = Astro.props;
       <SectionHeading
         eyebrow="Bénéfices"
         title={`Pourquoi intégrer ${service.shortTitle.toLowerCase()} dans votre projet`}
-        copy="La page détail reste orientée bénéfices concrets et aide à faire avancer le visiteur vers la prise de contact."
+        copy="Cette expertise est pensée pour améliorer durablement votre confort, la performance de votre habitat et la valeur de votre bien."
       />
       <div class="cards-grid">
         {service.benefits.map((item: string) => (
@@ -71,7 +71,7 @@ const { service } = Astro.props;
         <SectionHeading
           eyebrow="Prestations"
           title="Ce que cette expertise peut couvrir"
-          copy="Le détail de service est prêt à accueillir plus tard des visuels de réalisations, une FAQ dédiée et des cas d'usage plus précis."
+          copy="Chaque projet est étudié selon vos besoins, votre habitat et le niveau de finition attendu."
         />
         <div class="service-list" style="margin-top: 1rem;">
           {service.items.map((item: string) => (
@@ -80,7 +80,7 @@ const { service } = Astro.props;
         </div>
       </div>
       <div class="highlight-panel" data-reveal="right">
-        <h3 class="title-md">Parcours recommandé</h3>
+        <h3 class="title-md">Comment se déroule votre projet</h3>
         <ul class="bullet-list stack" style="margin-top: 1rem;">
           <li>Qualification du besoin et prise d'informations.</li>
           <li>Étude personnalisée avec devis gratuit.</li>
