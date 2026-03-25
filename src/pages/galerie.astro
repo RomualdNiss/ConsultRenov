@@ -22,10 +22,10 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
     <div class="container split-grid">
       <div class="stack" data-reveal="left">
         <p class="eyebrow">Galerie</p>
-        <h1 class="title-lg">Des visuels de demonstration pour aider le client a se projeter.</h1>
+        <h1 class="title-lg">Des visuels de démonstration pour aider le client à se projeter.</h1>
         <p class="lead">
-          Cette galerie regroupe des images de test classees par service pour valider le parcours,
-          l'organisation et le rendu visuel avant l'integration des vraies photos chantier.
+          Cette galerie regroupe des images de test classées par service pour valider le parcours,
+          l'organisation et le rendu visuel avant l'intégration des vraies photos chantier.
         </p>
         <div class="cluster">
           <Button href={withBase("services")} variant="ghost">Voir les services</Button>
@@ -33,14 +33,14 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
         </div>
       </div>
       <div class="highlight-panel stack" data-reveal="right">
-        <h2 class="title-md">Galerie statique, simple a faire evoluer</h2>
+        <h2 class="title-md">Galerie statique, simple à faire évoluer</h2>
         <p class="text-muted">
-          Les visuels affiches ici sont des exemples issus du web, stockes localement dans le projet
-          pour les tests. Ils pourront etre remplaces plus tard sans changer la structure de la page.
+          Les visuels affichés ici sont des exemples issus du web, stockés localement dans le projet
+          pour les tests. Ils pourront être remplacés plus tard sans changer la structure de la page.
         </p>
         <ul class="bullet-list stack">
-          <li>Filtrage multi-selection par services.</li>
-          <li>Ajout ou retrait d'images sans base de donnees.</li>
+          <li>Filtrage multi-sélection par services.</li>
+          <li>Ajout ou retrait d'images sans base de données.</li>
           <li>Compatible mobile, tablette et desktop.</li>
         </ul>
       </div>
@@ -51,8 +51,8 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
     <div class="container">
       <SectionHeading
         eyebrow="Inspirations"
-        title="Filtrer la galerie selon les expertises a mettre en avant"
-        copy="Selectionnez un ou plusieurs services pour ne garder que les visuels pertinents. Les images restent volontairement demonstratives et non contractuelles."
+        title="Filtrer la galerie selon les expertises à mettre en avant"
+        copy="Sélectionnez un ou plusieurs services pour ne garder que les visuels pertinents. Les images restent volontairement démonstratives et non contractuelles."
       />
 
       <div class="gallery-shell surface" data-gallery-root>
@@ -79,7 +79,7 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
             ))}
           </div>
           <p class="gallery-results text-muted" data-gallery-count>
-            {galleryItems.length} visuels affiches
+            {galleryItems.length} visuels affichés
           </p>
         </div>
 
@@ -102,11 +102,11 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
               </div>
               <div class="gallery-card-body">
                 <div class="gallery-card-top">
-                  <span class="kicker">Visuel test</span>
+                  <span class="kicker">Visuel de test</span>
                 </div>
                 <h2 class="title-md">{item.title}</h2>
                 <p class="text-muted">{item.description}</p>
-                <div class="gallery-tag-list" aria-label="Services associes">
+                <div class="gallery-tag-list" aria-label="Services associés">
                   {item.services.map((slug) => (
                     <span class="gallery-tag">{serviceLabelBySlug.get(slug) ?? slug}</span>
                   ))}
@@ -117,10 +117,10 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
         </div>
 
         <div class="gallery-empty accent-panel" data-gallery-empty hidden>
-          <h2 class="title-md">Aucun visuel ne correspond a cette combinaison.</h2>
+          <h2 class="title-md">Aucun visuel ne correspond à cette combinaison.</h2>
           <p>
-            Desactivez un filtre ou revenez a <strong>Tous</strong> pour afficher l'ensemble des
-            images de demonstration.
+            Désactivez un filtre ou revenez à <strong>Tous</strong> pour afficher l'ensemble des
+            images de démonstration.
           </p>
         </div>
       </div>
@@ -143,7 +143,7 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
       const updateCounter = (visibleCount) => {
         if (!counter) return;
         const suffix = visibleCount > 1 ? "s" : "";
-        counter.textContent = `${visibleCount} visuel${suffix} affiche${suffix}`;
+        counter.textContent = `${visibleCount} visuel${suffix} affiché${suffix}`;
       };
 
       const syncFilterButtons = () => {

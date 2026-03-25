@@ -12,7 +12,7 @@ test("gallery supports multi-select service filters", async ({ page }) => {
   await page.goto("/galerie", { waitUntil: "networkidle" });
 
   await expect(page.locator("[data-gallery-card]")).toHaveCount(10);
-  await expect(page.locator("[data-gallery-count]")).toContainText("10 visuels affiches");
+  await expect(page.locator("[data-gallery-count]")).toContainText("10 visuels affichés");
 
   await page.locator('[data-service-filter="facade"]').click();
   let visibleServices = await getVisibleCardServices(page);
@@ -37,7 +37,7 @@ test("gallery supports multi-select service filters", async ({ page }) => {
   ).toBeTruthy();
 
   await page.locator("[data-filter-reset]").click();
-  await expect(page.locator("[data-gallery-count]")).toContainText("10 visuels affiches");
+  await expect(page.locator("[data-gallery-count]")).toContainText("10 visuels affichés");
   visibleServices = await getVisibleCardServices(page);
   expect(visibleServices).toHaveLength(10);
 });
