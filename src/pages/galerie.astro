@@ -1,0 +1,216 @@
+---
+import ContactCtaSection from "../components/sections/ContactCtaSection.astro";
+import Button from "../components/ui/Button.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import { galleryItems } from "../data/gallery";
+import { seoDefaults } from "../data/seo";
+import { services } from "../data/services";
+import { withBase } from "../lib/paths";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const galleryFilters = services.map((service) => ({
+  slug: service.slug,
+  label: service.shortTitle,
+  title: service.title,
+}));
+
+const serviceLabelBySlug = new Map(services.map((service) => [service.slug, service.shortTitle]));
+---
+
+<BaseLayout title={seoDefaults.galleryTitle} description={seoDefaults.galleryDescription}>
+  <section class="page-hero">
+    <div class="container split-grid">
+      <div class="stack" data-reveal="left">
+        <p class="eyebrow">Galerie</p>
+        <h1 class="title-lg">Des visuels de demonstration pour aider le client a se projeter.</h1>
+        <p class="lead">
+          Cette galerie regroupe des images de test classees par service pour valider le parcours,
+          l'organisation et le rendu visuel avant l'integration des vraies photos chantier.
+        </p>
+        <div class="cluster">
+          <Button href={withBase("services")} variant="ghost">Voir les services</Button>
+          <Button href={withBase("contact")} variant="primary">Demander un devis gratuit</Button>
+        </div>
+      </div>
+      <div class="highlight-panel stack" data-reveal="right">
+        <h2 class="title-md">Galerie statique, simple a faire evoluer</h2>
+        <p class="text-muted">
+          Les visuels affiches ici sont des exemples issus du web, stockes localement dans le projet
+          pour les tests. Ils pourront etre remplaces plus tard sans changer la structure de la page.
+        </p>
+        <ul class="bullet-list stack">
+          <li>Filtrage multi-selection par services.</li>
+          <li>Ajout ou retrait d'images sans base de donnees.</li>
+          <li>Compatible mobile, tablette et desktop.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Inspirations"
+        title="Filtrer la galerie selon les expertises a mettre en avant"
+        copy="Selectionnez un ou plusieurs services pour ne garder que les visuels pertinents. Les images restent volontairement demonstratives et non contractuelles."
+      />
+
+      <div class="gallery-shell surface" data-gallery-root>
+        <div class="gallery-toolbar">
+          <div class="gallery-filter-list" role="group" aria-label="Filtrer la galerie par service">
+            <button
+              type="button"
+              class="gallery-filter is-active"
+              data-filter-reset
+              aria-pressed="true"
+            >
+              Tous
+            </button>
+            {galleryFilters.map((filter) => (
+              <button
+                type="button"
+                class="gallery-filter"
+                data-service-filter={filter.slug}
+                aria-pressed="false"
+                title={filter.title}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+          <p class="gallery-results text-muted" data-gallery-count>
+            {galleryItems.length} visuels affiches
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          {galleryItems.map((item, index) => (
+            <article
+              class="gallery-card"
+              data-gallery-card
+              data-services={item.services.join(",")}
+              data-reveal={index % 2 === 0 ? "left" : "right"}
+            >
+              <div class="gallery-media">
+                <img
+                  src={withBase(item.image)}
+                  alt={item.alt}
+                  loading={index < 4 ? "eager" : "lazy"}
+                  width="1600"
+                  height="1200"
+                />
+              </div>
+              <div class="gallery-card-body">
+                <div class="gallery-card-top">
+                  <span class="kicker">Visuel test</span>
+                </div>
+                <h2 class="title-md">{item.title}</h2>
+                <p class="text-muted">{item.description}</p>
+                <div class="gallery-tag-list" aria-label="Services associes">
+                  {item.services.map((slug) => (
+                    <span class="gallery-tag">{serviceLabelBySlug.get(slug) ?? slug}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div class="gallery-empty accent-panel" data-gallery-empty hidden>
+          <h2 class="title-md">Aucun visuel ne correspond a cette combinaison.</h2>
+          <p>
+            Desactivez un filtre ou revenez a <strong>Tous</strong> pour afficher l'ensemble des
+            images de demonstration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactCtaSection />
+
+  <script is:inline>
+    const galleryRoot = document.querySelector("[data-gallery-root]");
+
+    if (galleryRoot) {
+      const resetButton = galleryRoot.querySelector("[data-filter-reset]");
+      const filterButtons = Array.from(galleryRoot.querySelectorAll("[data-service-filter]"));
+      const cards = Array.from(galleryRoot.querySelectorAll("[data-gallery-card]"));
+      const counter = galleryRoot.querySelector("[data-gallery-count]");
+      const emptyState = galleryRoot.querySelector("[data-gallery-empty]");
+      const activeFilters = new Set();
+
+      const updateCounter = (visibleCount) => {
+        if (!counter) return;
+        const suffix = visibleCount > 1 ? "s" : "";
+        counter.textContent = `${visibleCount} visuel${suffix} affiche${suffix}`;
+      };
+
+      const syncFilterButtons = () => {
+        const hasFilters = activeFilters.size > 0;
+
+        if (resetButton) {
+          resetButton.classList.toggle("is-active", !hasFilters);
+          resetButton.setAttribute("aria-pressed", String(!hasFilters));
+        }
+
+        filterButtons.forEach((button) => {
+          const serviceSlug = button.getAttribute("data-service-filter");
+          const isActive = serviceSlug ? activeFilters.has(serviceSlug) : false;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      };
+
+      const syncCards = () => {
+        let visibleCount = 0;
+
+        cards.forEach((card) => {
+          const serviceList =
+            card.getAttribute("data-services")?.split(",").filter(Boolean) ?? [];
+          const isVisible =
+            activeFilters.size === 0 ||
+            serviceList.some((serviceSlug) => activeFilters.has(serviceSlug));
+
+          card.toggleAttribute("hidden", !isVisible);
+          card.classList.toggle("is-hidden", !isVisible);
+
+          if (isVisible) {
+            visibleCount += 1;
+          }
+        });
+
+        updateCounter(visibleCount);
+
+        if (emptyState) {
+          emptyState.hidden = visibleCount !== 0;
+        }
+      };
+
+      syncFilterButtons();
+      syncCards();
+
+      resetButton?.addEventListener("click", () => {
+        activeFilters.clear();
+        syncFilterButtons();
+        syncCards();
+      });
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const serviceSlug = button.getAttribute("data-service-filter");
+          if (!serviceSlug) return;
+
+          if (activeFilters.has(serviceSlug)) {
+            activeFilters.delete(serviceSlug);
+          } else {
+            activeFilters.add(serviceSlug);
+          }
+
+          syncFilterButtons();
+          syncCards();
+        });
+      });
+    }
+  </script>
+</BaseLayout>
