@@ -27,13 +27,30 @@ const {
 } = Astro.props;
 
 const classes = full ? "form-field is-full" : "form-field";
+const inputPlaceholder = placeholder || " ";
 ---
 
 <div class={classes}>
-  <label for={name}>{label}</label>
-  {textarea ? (
-    <textarea id={name} name={name} placeholder={placeholder} required={required}></textarea>
-  ) : (
-    <input id={name} name={name} type={type} placeholder={placeholder} required={required} />
-  )}
+  <div class="field-control">
+    {textarea ? (
+      <textarea
+        id={name}
+        name={name}
+        placeholder={inputPlaceholder}
+        required={required}
+        data-cursor-text
+      ></textarea>
+    ) : (
+      <input
+        id={name}
+        name={name}
+        type={type}
+        placeholder={inputPlaceholder}
+        required={required}
+        data-cursor-text
+      />
+    )}
+    <label class="field-label" for={name}>{label}</label>
+    <span class="field-line" aria-hidden="true"></span>
+  </div>
 </div>

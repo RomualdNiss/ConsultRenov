@@ -68,17 +68,19 @@ const nextUrl = new URL(withBase("contact?sent=1"), siteConfig.siteUrl).toString
   </label>
 
   <div class="cluster">
-    <Button type="submit" variant="primary">Envoyer ma demande</Button>
-    <Button href={siteConfig.phoneHref} variant="ghost">Appeler maintenant</Button>
+    <button
+      class="button button-primary submit-button"
+      type="submit"
+      data-submit-button
+      data-button-sparkle
+      data-cursor-cta
+    >
+      <span class="button-text">Envoyer ma demande</span>
+      <span class="submit-loader" aria-hidden="true"></span>
+      <svg class="submit-check" aria-hidden="true" viewBox="0 0 20 20" width="20" height="20" fill="none">
+        <path d="M4 10.5 8 14.5 16 6.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <Button href={siteConfig.phoneHref} variant="ghost" data-button-sparkle>Appeler maintenant</Button>
   </div>
 </form>
-
-<script is:inline>
-  const feedback = document.querySelector("[data-form-feedback]");
-  const params = new URLSearchParams(window.location.search);
-  if (feedback && params.get("sent") === "1") {
-    feedback.textContent = "Votre demande a bien été envoyée. ConsultRenov revient vers vous sous 48h.";
-    feedback.style.background = "rgba(31, 107, 68, 0.12)";
-    feedback.style.color = "#1f6b44";
-  }
-</script>

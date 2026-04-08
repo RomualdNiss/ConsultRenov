@@ -14,7 +14,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
     />
     <div class="contact-grid contact-block">
       <div class="contact-card-list" data-reveal="left">
-        <article class="contact-card">
+        <article class="contact-card" data-cursor="card" data-cursor-label="Voir →">
           <div class="contact-card-top">
             <h3 class="title-md">Téléphone</h3>
             <div class="icon-wrap"><Icon name="phone" /></div>
@@ -22,7 +22,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
           <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
           <p class="text-muted">Pour échanger rapidement sur votre besoin et organiser un premier contact.</p>
         </article>
-        <article class="contact-card">
+        <article class="contact-card" data-cursor="card" data-cursor-label="Voir →">
           <div class="contact-card-top">
             <h3 class="title-md">Email</h3>
             <div class="icon-wrap"><Icon name="mail" /></div>
@@ -30,7 +30,7 @@ import SectionHeading from "../ui/SectionHeading.astro";
           <a href={siteConfig.emailHref}>{siteConfig.email}</a>
           <p class="text-muted">Pour envoyer votre demande et recevoir un retour personnalisé.</p>
         </article>
-        <article class="contact-card">
+        <article class="contact-card" data-cursor="card" data-cursor-label="Voir →">
           <div class="contact-card-top">
             <h3 class="title-md">Adresse</h3>
             <div class="icon-wrap"><Icon name="map" /></div>

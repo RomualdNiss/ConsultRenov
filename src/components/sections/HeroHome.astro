@@ -1,26 +1,46 @@
 ---
 import { siteConfig } from "../../config/site";
 import { withBase } from "../../lib/paths";
-import Button from "../ui/Button.astro";
 import Badge from "../ui/Badge.astro";
+import Button from "../ui/Button.astro";
 import Reveal from "../ui/Reveal.astro";
+
+const heroTitle = "La rénovation de l'habitat pensée pour gagner en confort et en sérénité.";
+const heroWords = heroTitle.split(" ");
 ---
 
-<section class="hero">
+<section class="hero" data-hero>
+  <div class="hero-backdrop" aria-hidden="true" data-parallax-speed="0.3"></div>
   <div class="container hero-grid">
-    <Reveal className="hero-copy">
+    <Reveal className="hero-copy hero-copy-panel">
       <div>
         <p class="eyebrow">Guichainville · Évreux · rénovation énergétique</p>
-        <h1 class="title-xl">La rénovation de l'habitat pensée pour gagner en confort et en sérénité.</h1>
+        <h1 class="title-xl hero-title" aria-label={heroTitle}>
+          {heroWords.map((word, index) => (
+            <span class="hero-title-word" style={`--word-index:${index};`}>
+              {word}
+            </span>
+          ))}
+        </h1>
       </div>
-      <p class="lead">
+      <p class="lead hero-subtitle" data-hero-subtitle>
         {siteConfig.heroTagline}. Menuiserie, façade, toiture, confort extérieur et équipements
         énergétiques avec un accompagnement clair pour faire avancer votre projet du premier échange
         jusqu'au suivi.
       </p>
       <div class="hero-actions">
-        <Button href={withBase("contact")} variant="primary">{siteConfig.ctaPrimary}</Button>
-        <Button href={siteConfig.phoneHref} variant="ghost">{siteConfig.phone}</Button>
+        <Button
+          href={withBase("contact")}
+          variant="primary"
+          className="hero-cta"
+          data-cursor-cta
+          data-button-sparkle
+        >
+          {siteConfig.ctaPrimary}
+        </Button>
+        <Button href={siteConfig.phoneHref} variant="ghost" data-button-sparkle>
+          {siteConfig.phone}
+        </Button>
       </div>
       <div class="hero-trust">
         <Badge>Devis gratuit</Badge>
@@ -30,7 +50,7 @@ import Reveal from "../ui/Reveal.astro";
     </Reveal>
 
     <Reveal direction="right">
-      <div class="hero-visual" aria-hidden="true">
+      <div class="hero-visual" aria-hidden="true" data-cursor="card" data-cursor-label="Voir →">
         <div class="hero-shell">
           <div class="hero-panel">
             <span class="hero-stripe">Confort · performance · proximité</span>
@@ -48,24 +68,58 @@ import Reveal from "../ui/Reveal.astro";
               <span class="kicker">Pompe à chaleur</span>
             </div>
           </div>
-          <div class="hero-stat-group">
-            <div class="hero-stat">
-              <div class="hero-number">48h</div>
-              <p class="text-muted">pour être rappelé par un conseiller</p>
+          <div class="hero-stat-group" data-stats-section>
+            <div class="hero-stat" data-stat-card>
+              <svg class="stat-arc" viewBox="0 0 64 64" aria-hidden="true">
+                <circle class="stat-arc-track" cx="32" cy="32" r="26"></circle>
+                <circle
+                  class="stat-arc-progress"
+                  cx="32"
+                  cy="32"
+                  r="26"
+                  data-progress-ring
+                  data-progress-target="0.82"
+                ></circle>
+              </svg>
+              <div class="hero-stat-copy">
+                <div class="hero-number" data-count-up="48" data-count-suffix="h" data-count-duration="1500">
+                  48h
+                </div>
+                <p class="text-muted">pour être rappelé par un conseiller</p>
+              </div>
             </div>
-            <div class="hero-stat">
-              <div class="hero-number">6</div>
-              <p class="text-muted">grandes expertises pour couvrir le projet</p>
+            <div class="hero-stat" data-stat-card>
+              <svg class="stat-arc" viewBox="0 0 64 64" aria-hidden="true">
+                <circle class="stat-arc-track" cx="32" cy="32" r="26"></circle>
+                <circle
+                  class="stat-arc-progress"
+                  cx="32"
+                  cy="32"
+                  r="26"
+                  data-progress-ring
+                  data-progress-target="0.94"
+                ></circle>
+              </svg>
+              <div class="hero-stat-copy">
+                <div class="hero-number" data-count-up="6" data-count-duration="1300">6</div>
+                <p class="text-muted">grandes expertises pour couvrir le projet</p>
+              </div>
             </div>
           </div>
           <div class="hero-card-stack">
             <div class="hero-card">
               <p class="title-md">Devis gratuit et étude personnalisée</p>
-              <p class="text-muted">Un échange clair pour qualifier votre besoin, cadrer le projet et vous orienter vers la bonne solution.</p>
+              <p class="text-muted">
+                Un échange clair pour qualifier votre besoin, cadrer le projet et vous orienter vers
+                la bonne solution.
+              </p>
             </div>
             <div class="hero-card">
               <p class="title-md">Évreux et alentours</p>
-              <p class="text-muted">Une présence de proximité pour les projets situés à Guichainville, à Évreux et dans les communes voisines.</p>
+              <p class="text-muted">
+                Une présence de proximité pour les projets situés à Guichainville, à Évreux et dans
+                les communes voisines.
+              </p>
             </div>
           </div>
         </div>

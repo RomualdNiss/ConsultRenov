@@ -1,11 +1,13 @@
 ---
 interface Props {
+  [key: string]: unknown;
   href?: string;
   variant?: "primary" | "secondary" | "ghost";
   size?: "default" | "small";
   type?: "button" | "submit";
   target?: string;
   rel?: string;
+  className?: string;
 }
 
 const {
@@ -15,6 +17,8 @@ const {
   type = "button",
   target,
   rel,
+  className = "",
+  ...attributes
 } = Astro.props;
 
 const classes = [
@@ -23,17 +27,18 @@ const classes = [
   variant === "secondary" ? "button-secondary" : "",
   variant === "ghost" ? "button-ghost" : "",
   size === "small" ? "button-small" : "",
+  className,
 ]
   .filter(Boolean)
   .join(" ");
 ---
 
 {href ? (
-  <a class={classes} href={href} target={target} rel={rel}>
-    <slot />
+  <a class={classes} href={href} target={target} rel={rel} {...attributes}>
+    <span class="button-text"><slot /></span>
   </a>
 ) : (
-  <button class={classes} type={type}>
-    <slot />
+  <button class={classes} type={type} {...attributes}>
+    <span class="button-text"><slot /></span>
   </button>
 )}

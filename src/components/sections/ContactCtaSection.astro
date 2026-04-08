@@ -17,8 +17,12 @@ import Button from "../ui/Button.astro";
           </p>
         </div>
         <div class="cluster" style="justify-content: flex-start;">
-          <Button href={withBase("contact")} variant="ghost">{siteConfig.ctaPrimary}</Button>
-          <Button href={siteConfig.phoneHref} variant="ghost">{siteConfig.phone}</Button>
+          <Button href={withBase("contact")} variant="ghost" data-button-sparkle data-cursor-cta>
+            {siteConfig.ctaPrimary}
+          </Button>
+          <Button href={siteConfig.phoneHref} variant="ghost" data-button-sparkle>
+            {siteConfig.phone}
+          </Button>
         </div>
       </div>
     </div>

@@ -19,8 +19,11 @@ const { services } = Astro.props;
     />
     <div class="cards-grid">
       {services.map((service, index) => (
-        <div data-reveal={index % 2 === 0 ? "left" : "right"}>
-          <ServiceCard service={service} />
+        <div
+          data-reveal={index % 2 === 0 ? "left" : "right"}
+          style={`--reveal-delay:${index * 80}ms;`}
+        >
+          <ServiceCard service={service} index={index} />
         </div>
       ))}
     </div>

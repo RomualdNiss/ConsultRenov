@@ -1,9 +1,9 @@
 ---
 import { reviewsConfig } from "../../config/site";
+import { testimonials } from "../../data/testimonials";
 import Button from "../ui/Button.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 
-const hasWidget = Boolean(reviewsConfig.widgetHtml.trim());
 const hasBusinessUrl = Boolean(reviewsConfig.googleBusinessUrl.trim());
 ---
 
@@ -18,68 +18,109 @@ const hasBusinessUrl = Boolean(reviewsConfig.googleBusinessUrl.trim());
             copy={reviewsConfig.widgetIntro}
           />
 
-          <div class="reviews-stats">
-            <div class="reviews-stat">
-              <strong>{reviewsConfig.reviewCount}</strong>
+          <div class="reviews-stats" data-stats-section>
+            <div class="reviews-stat" data-stat-card>
+              <strong data-count-up="50" data-count-suffix="+">50+</strong>
               <span>{reviewsConfig.reviewCountLabel}</span>
             </div>
-            <div class="reviews-stat">
-              <strong>Présence locale</strong>
-              <span>un repère rassurant avant la prise de contact</span>
+            <div class="reviews-stat" data-stat-card>
+              <strong data-count-up="48" data-count-suffix="h">48h</strong>
+              <span>rappel commercial annoncé</span>
             </div>
-            <div class="reviews-stat">
-              <strong>Preuve sociale</strong>
-              <span>de vrais retours consultables sur Google</span>
+            <div class="reviews-stat" data-stat-card>
+              <strong data-count-up="6">6</strong>
+              <span>expertises coordonnées pour couvrir le projet</span>
             </div>
           </div>
 
-          {hasBusinessUrl && (
-            <div class="cluster" style="margin-top: 1.5rem;">
-              <Button
-                href={reviewsConfig.googleBusinessUrl}
-                variant="primary"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Voir sur Google
-              </Button>
-            </div>
-          )}
+          <div class="reviews-proof-panel">
+            <p class="reviews-proof-copy">
+              Une présence locale, un discours rassurant et un accès direct à la prise de contact
+              pour convertir plus vite les visiteurs les plus chauds.
+            </p>
+            {hasBusinessUrl && (
+              <div class="cluster" style="margin-top: 1.5rem;">
+                <Button
+                  href={reviewsConfig.googleBusinessUrl}
+                  variant="primary"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-button-sparkle
+                >
+                  Voir sur Google
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
 
-        <div class="reviews-widget-shell" data-reveal="right">
-          {hasWidget ? (
-            <div class="reviews-widget" set:html={reviewsConfig.widgetHtml} />
-          ) : (
-            <div class="reviews-widget-fallback">
-              <h3 class="title-md">Une présence Google qui rassure dès la première visite</h3>
-              <p class="text-muted">
-                Les avis publiés sur Google renforcent la crédibilité de l'entreprise et permettent
-                aux futurs clients de se projeter avant même la première prise de contact.
-              </p>
-              <div class="reviews-proof">
-                <strong>{reviewsConfig.reviewCount}</strong>
-                <span>{reviewsConfig.reviewCountLabel}</span>
-              </div>
-              <ul class="bullet-list stack" style="margin-top: 1rem;">
-                <li>Une preuve sociale forte avant la prise de contact.</li>
-                <li>Des retours concrets sur le sérieux du suivi et de l'accompagnement.</li>
-                <li>Un accès direct à la présence Google de l'entreprise.</li>
-              </ul>
-              {hasBusinessUrl && (
-                <div class="cluster" style="margin-top: 1.5rem;">
-                  <Button
-                    href={reviewsConfig.googleBusinessUrl}
-                    variant="ghost"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Ouvrir Google
-                  </Button>
-                </div>
-              )}
+        <div class="reviews-slider-shell" data-reveal="right">
+          <div class="testimonial-slider" data-testimonial-slider>
+            <div class="testimonial-track" data-testimonial-track>
+              {testimonials.map((testimonial, index) => (
+                <article
+                  class={`testimonial-card ${index === 0 ? "is-active" : ""}`}
+                  data-testimonial-slide
+                  data-cursor="card"
+                  data-cursor-label="Voir →"
+                >
+                  <div class="testimonial-top">
+                    <span class="kicker">{testimonial.eyebrow}</span>
+                    <div class="testimonial-stars" aria-label="Note 5 sur 5">
+                      {Array.from({ length: 5 }).map(() => (
+                        <span>★</span>
+                      ))}
+                    </div>
+                  </div>
+                  <h3 class="title-md">{testimonial.title}</h3>
+                  <p class="testimonial-quote">“{testimonial.quote}”</p>
+                  <div class="testimonial-meta">
+                    <div class="testimonial-avatar" aria-hidden="true">
+                      <span>{testimonial.initials}</span>
+                    </div>
+                    <div>
+                      <strong>{testimonial.name}</strong>
+                      <span>{testimonial.role}</span>
+                    </div>
+                  </div>
+                  <p class="testimonial-highlight">{testimonial.highlight}</p>
+                </article>
+              ))}
             </div>
-          )}
+
+            <div class="testimonial-controls">
+              <button
+                type="button"
+                class="testimonial-nav"
+                aria-label="Avis précédent"
+                data-testimonial-prev
+                data-button-sparkle
+              >
+                ←
+              </button>
+              <div class="testimonial-dots" role="tablist" aria-label="Sélectionner un avis">
+                {testimonials.map((testimonial, index) => (
+                  <button
+                    type="button"
+                    class={`testimonial-dot ${index === 0 ? "is-active" : ""}`}
+                    aria-label={`Afficher ${testimonial.title}`}
+                    aria-pressed={index === 0 ? "true" : "false"}
+                    data-testimonial-dot
+                    data-button-sparkle
+                  ></button>
+                ))}
+              </div>
+              <button
+                type="button"
+                class="testimonial-nav"
+                aria-label="Avis suivant"
+                data-testimonial-next
+                data-button-sparkle
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

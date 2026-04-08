@@ -22,6 +22,10 @@ export const siteConfig = {
   ctaPrimary: "Demander un devis gratuit",
   ctaSecondary: "Être rappelé sous 48h",
   heroTagline: "Rénovation sur mesure au service de votre confort",
+  whatsappHref:
+    "https://wa.me/33679225480?text=Bonjour%20ConsultRenov%2C%20je%20souhaite%20obtenir%20un%20devis%20pour%20mon%20projet.",
+  socialProofBadge: "50+ projets accompagnés cette année",
+  mobileStickyCtaLabel: "Demander un devis gratuit",
 } as const;
 
 export const formConfig = {

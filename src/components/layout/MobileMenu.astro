@@ -17,11 +17,18 @@ const { pathname } = Astro.props;
       class="nav-link"
       href={withBase(item.href)}
       aria-current={pathname === item.href ? "page" : undefined}
+      data-mobile-nav-link
     >
       {item.label}
     </a>
   ))}
-  <Button href={withBase("contact")} variant="primary" size="small">
+  <Button
+    href={withBase("contact")}
+    variant="primary"
+    size="small"
+    data-button-sparkle
+    data-cursor-cta
+  >
     {siteConfig.ctaPrimary}
   </Button>
 </div>

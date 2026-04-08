@@ -28,8 +28,12 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
           l'organisation et le rendu visuel avant l'intégration des vraies photos chantier.
         </p>
         <div class="cluster">
-          <Button href={withBase("services")} variant="ghost">Voir les services</Button>
-          <Button href={withBase("contact")} variant="primary">Demander un devis gratuit</Button>
+          <Button href={withBase("services")} variant="ghost" data-button-sparkle>
+            Voir les services
+          </Button>
+          <Button href={withBase("contact")} variant="primary" data-button-sparkle data-cursor-cta>
+            Demander un devis gratuit
+          </Button>
         </div>
       </div>
       <div class="highlight-panel stack" data-reveal="right">
@@ -63,6 +67,7 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
               class="gallery-filter is-active"
               data-filter-reset
               aria-pressed="true"
+              data-button-sparkle
             >
               Tous
             </button>
@@ -73,6 +78,7 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
                 data-service-filter={filter.slug}
                 aria-pressed="false"
                 title={filter.title}
+                data-button-sparkle
               >
                 {filter.label}
               </button>
@@ -90,15 +96,22 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
               data-gallery-card
               data-services={item.services.join(",")}
               data-reveal={index % 2 === 0 ? "left" : "right"}
+              style={`--reveal-delay:${index * 80}ms;`}
             >
-              <div class="gallery-media">
+              <div class="gallery-media" data-gallery-media data-cursor="card" data-cursor-label="Voir →">
+                <div class="gallery-skeleton" aria-hidden="true"></div>
                 <img
                   src={withBase(item.image)}
                   alt={item.alt}
                   loading={index < 4 ? "eager" : "lazy"}
                   width="1600"
                   height="1200"
+                  data-gallery-image
                 />
+                <div class="gallery-overlay" aria-hidden="true">
+                  <span class="gallery-overlay-tag">Projet inspirant</span>
+                  <span class="gallery-overlay-copy">Voir le détail</span>
+                </div>
               </div>
               <div class="gallery-card-body">
                 <div class="gallery-card-top">

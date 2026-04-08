@@ -6,14 +6,18 @@ import Icon from "./Icon.astro";
 
 interface Props {
   service: Service;
+  index?: number;
 }
 
-const { service } = Astro.props;
+const { service, index = 0 } = Astro.props;
 ---
 
-<article class="service-card">
+<article class="service-card" data-cursor="card" data-cursor-label="Voir →">
+  <span class="service-overlay-number" aria-hidden="true">
+    {String(index + 1).padStart(2, "0")}
+  </span>
   <div class="service-card-top">
-    <div class="icon-wrap">
+    <div class="icon-wrap service-icon-wrap">
       <Icon name={service.icon as any} />
     </div>
     <span class="kicker">{service.highlight}</span>
@@ -29,7 +33,12 @@ const { service } = Astro.props;
     ))}
   </div>
   <div>
-    <Button href={withBase(`services/${service.slug}`)} variant="ghost" size="small">
+    <Button
+      href={withBase(`services/${service.slug}`)}
+      variant="ghost"
+      size="small"
+      data-button-sparkle
+    >
       Découvrir ce service
     </Button>
   </div>
