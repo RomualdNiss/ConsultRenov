@@ -98,7 +98,7 @@ const serviceLabelBySlug = new Map(services.map((service) => [service.slug, serv
               data-reveal={index % 2 === 0 ? "left" : "right"}
               style={`--reveal-delay:${index * 80}ms;`}
             >
-              <div class="gallery-media" data-gallery-media data-cursor="card" data-cursor-label="Voir →">
+              <div class="gallery-media" data-gallery-media>
                 <div class="gallery-skeleton" aria-hidden="true"></div>
                 <img
                   src={withBase(item.image)}

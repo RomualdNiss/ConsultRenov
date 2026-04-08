@@ -119,7 +119,7 @@ body {
 
 .hero-backdrop {
   position: absolute;
-  inset: -8% -12% 18% 48%;
+  inset: 4% 0 16% 46%;
   border-radius: 48px;
   background:
     radial-gradient(circle at 22% 24%, rgba(0, 82, 204, 0.18), transparent 38%),
@@ -285,6 +285,17 @@ body {
     background-position 0.45s ease;
 }
 
+.service-card-link {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+
+.service-card-link .button {
+  pointer-events: none;
+}
+
 .service-card::before {
   content: "";
   position: absolute;
@@ -368,23 +379,33 @@ body {
 }
 
 .testimonial-track {
-  display: flex;
+  display: grid;
   width: 100%;
-  transform: translate3d(calc(var(--testimonial-index, 0) * -100%), 0, 0);
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .testimonial-card {
-  min-width: 100%;
+  grid-area: 1 / 1;
   display: grid;
   gap: var(--space-4);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(30px, 0, 0);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.testimonial-card.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
 }
 
 .testimonial-top,
 .testimonial-meta,
 .testimonial-controls {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: var(--space-4);
 }
@@ -1237,7 +1258,7 @@ html.has-custom-cursor * {
   }
 
   .hero-backdrop {
-    inset: -10% -24% 36% 32%;
+    inset: 6% 0 34% 28%;
   }
 
   .testimonial-top,

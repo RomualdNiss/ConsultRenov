@@ -1,7 +1,6 @@
 ---
 import type { Service } from "../../data/services";
 import { withBase } from "../../lib/paths";
-import Button from "./Button.astro";
 import Icon from "./Icon.astro";
 
 interface Props {
@@ -12,7 +11,13 @@ interface Props {
 const { service, index = 0 } = Astro.props;
 ---
 
-<article class="service-card" data-cursor="card" data-cursor-label="Voir →">
+<a
+  class="service-card service-card-link"
+  href={withBase(`services/${service.slug}`)}
+  data-cursor="card"
+  data-cursor-label="Voir →"
+  data-button-sparkle
+>
   <span class="service-overlay-number" aria-hidden="true">
     {String(index + 1).padStart(2, "0")}
   </span>
@@ -33,13 +38,8 @@ const { service, index = 0 } = Astro.props;
     ))}
   </div>
   <div>
-    <Button
-      href={withBase(`services/${service.slug}`)}
-      variant="ghost"
-      size="small"
-      data-button-sparkle
-    >
-      Découvrir ce service
-    </Button>
+    <span class="button button-ghost button-small">
+      <span class="button-text">Découvrir ce service</span>
+    </span>
   </div>
-</article>
+</a>

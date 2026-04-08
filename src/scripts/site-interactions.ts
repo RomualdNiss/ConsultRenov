@@ -604,7 +604,7 @@ function initCursor() {
       return
     }
 
-    const card = element.closest<HTMLElement>("[data-cursor='card'], .gallery-media, .service-card, .contact-card")
+    const card = element.closest<HTMLElement>("[data-cursor='card']")
     if (card) {
       ring.classList.add("is-card")
       if (label) {
